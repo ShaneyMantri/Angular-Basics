@@ -1,0 +1,186 @@
+<!-- interpolation (binding of data)-->
+<!-- Can access data and method from component class -->
+<h1>{{name}} works!</h1>
+<h2>2+2 = {{2+2}}</h2>
+<h2>{{"Welcome "+name}}</h2>
+<h2>{{name.length}}</h2>
+<h2>{{name.toUpperCase()}}</h2>
+<h2>{{greetUser()}}</h2>
+<!-- <h2>{{a=2+2}}</h2>       this is not allowed-->
+<h2>{{siteUrl}}</h2>
+
+
+<!-- Property Binding -->
+<!-- id set to ShaneyID defined in class -->
+<input [id]="myId" type="text" value="ShaneyID">
+<!-- or use --><br>
+<input id=" {{myId}}" type="text" name="" value="Mantri">
+
+
+<!-- interpolation doesnt work with boolean like disabled attribute hence use property binding -->
+<input disabled="false" id=" {{myId}}" type="text" name="" value="Mantri">
+<!-- hence use property binding -->
+<input [disabled]="false" id=" {{myId}}" type="text" name="" value="Mantri">
+
+<!-- isDisabled in test class  -->
+<input [disabled]="isDisabled" id=" {{myId}}" type="text" name="" value="Mantri">
+
+
+
+<!-- class binding -->
+<h2>{{name}}</h2>
+<div class="text-success">
+  <h2>Hello</h2>
+  <!-- binded class -->
+  <h2 [class]="successClass">Class binding</h2>
+  <!-- condtionally apply classes -->
+  <h2 [class.text-danger]="hasError" >Conditonal apply</h2>
+
+  <!-- Can be used to select and apply from multiple classes -->
+  <h2 [ngClass]="messageClass">NG DIRECTIVE FOR ANGULAR</h2>
+  <!--  Style binding -->
+  <h2 [style.color]="'orange'">Style Binding</h2>
+
+  <!-- style binding with condition -->
+  <h2 [style.color]="hasError?'red':'green'">Style Binding</h2>
+
+  <!-- Dynamic style binding -->
+  <h2 [style.color]="highlightColor">Style binding2</h2>
+
+
+  <!-- Can be used to select and apply from multiple styles -->
+  <h2 [ngStyle] = "titleStyles">Style binding 3</h2>
+
+
+  <!-- Event Binding -->
+  <!--  (click) is the event we want to listen to -->
+  <!-- onClick() is a function in test class -->
+  <button (click)="onClick()" >Greet</button>
+  <br>
+  <!-- set property on click -->
+  <button (click)="setProperty()">Set property</button>
+  <h1>{{greeting}}</h1>
+  <button (click)="greeting='Yo shaney'">Set property</button>
+  <h1>{{greeting}}</h1>
+  <br>
+  <!-- informatioon about DOM event -->
+  <button (click)="onClickEvent($event)">Event Name</button>
+
+
+  <br>
+  <!-- Template reference variables -->
+  <!--  reference variable created using #varibale_name -->
+  <h3>Template reference variables</h3>
+  <input #myInput type="text">
+  <button (click)="logMessage(myInput.value)">Log</button>
+  <br>
+  <input #myInput type="text">
+  <button (click)="logMessage(myInput)">Log</button>
+  <br>
+
+
+  <!-- two way binding -->
+  <!-- []  for class to template and () for event binding ie. template to class-->
+  <!-- need to add forms module for ngModel in app module ts -->
+  <h3>Two way binding</h3>
+  <input [(ngModel)]="userName" type="text">
+  {{userName}}
+
+  <!-- ngIf directive removes from DOM itself -->
+  <h3>ngIf</h3>
+  <p *ngIf="!displayName">Shaney IF false</p>
+  <p *ngIf="displayName">Shaney IF true</p>
+
+  <!-- ngIf --- if else block -->
+
+  <p *ngIf="!displayName; else elseblock">If block</p>
+
+  <ng-template #elseblock>
+    <p *ngIf="displayName">Else block</p>
+  </ng-template>
+
+  <!-- another syntax -->
+
+  <div *ngIf="displayName; then thenBlock; else elseBlock"></div>
+  <ng-template #thenBlock>
+    <p>If block another syntax</p>
+  </ng-template>
+
+  <ng-template #elseBlock>
+    <p>Else block another syntax</p>
+  </ng-template>
+
+
+  <!-- ngSwitch directive is like a switch statement for rendering html templates -->
+  <!-- switchColor in test class -->
+  <h3>ngSwitch directive</h3>
+  <div [ngSwitch]="switchColor">
+    <div *ngSwitchCase="'red'" [style.color]="switchColor">You picked red</div>
+    <div *ngSwitchCase="'blue'" [style.color]="switchColor">You picked blue</div>
+    <div *ngSwitchCase="'green'" [style.color]="switchColor">You picked green</div>
+    <div *ngSwitchDefault>Default color case</div>
+  </div>
+
+  <!-- ngFor --- rnedering list of elements and is like a for loop -->
+  <h3>ngFor</h3>
+  <div *ngFor="let colorelement of forColors; index as i; first as f; last as l; odd as o; even as e">
+    <p>{{f}} {{l}} {{o}} {{e}} {{i}} {{colorelement}}</p>
+  </div>
+
+
+  <!-- component Interaction -->
+  <h2>Component Interaction</h2>
+  <p>{{parentData}}</p>
+
+  <button (click)="fireEvent()">Send data to Parent</button>
+
+
+  <!-- Pipe -->
+  <h2>Pipe</h2>
+  <p>{{pipeName}}</p>
+  <p>{{pipeName | lowercase }}</p>
+  <p>{{pipeName | uppercase }}</p>
+  <p>{{pipeName | titlecase }}</p>
+  <!-- slice pipe to display a part of string -->
+  <!-- at index slice:index:endindex -->
+  <h2>{{ pipeName| slice:3 }}</h2>
+  <h2>{{ pipeName| slice:4:10 }}</h2>
+
+  <!-- json pipe -->
+  <h2>{{ person | json }}</h2>
+
+  <!-- number pipe for numbers -->
+  <!-- minimum number of integer digit before dot and after that minimum and maximum no of digits after dot -->
+  <h2>{{ 5.678 | number:'1.2-3'}}</h2>
+  <h2>{{ 5.678 | number:'3.4-5'}}</h2>
+  <h2>{{ 5.678 | number:'3.1-2'}}</h2>
+
+
+  <!-- percent pipe -->
+  <h2>{{ 0.5| percent }}</h2>
+
+<!-- Currency pipe -->
+  <h2>{{ 0.5| currency }}</h2>
+  <h2>{{ 0.5| currency: 'INR' }}</h2>
+  <h2>{{ 0.5| currency: 'EUR': 'code' }}</h2>
+
+  <!-- Date pipe -->
+  <h2>{{ date }}</h2>
+  <h2>{{ date | date:'short'}}</h2>
+  <h2>{{ date | date:'shortDate'}}</h2>
+  <h2>{{ date | date:'shortTime'}}</h2>
+  <h2>{{ date | date:'mediumTime'}}</h2>
+  <h2>{{ date | date:'longTime'}}</h2>
+  <h2>{{ date | date:'longDate'}}</h2>
+
+  <!-- Services -->
+  <h2>Services from test1</h2>
+  <ul *ngFor="let emp of employeeList">
+    <li>{{emp.id}} {{emp.name}} {{emp.age}}</li>
+  </ul>
+  <h2>{{errorMsg}}</h2>
+  
+
+
+
+</div>
