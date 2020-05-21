@@ -4,3 +4,10 @@
   <li>{{emp.id}} {{emp.name}} {{emp.age}}</li>
 </ul>
 <h2>{{errorMsg}}</h2>
+
+<h2>Route parameter</h2>
+<ul class="items">
+  <li (click)="onSelect(dep)" *ngFor="let dep of departments">
+    <span class="badge">{{dep.id}}</span>{{dep.name}}
+  </li>
+</ul>

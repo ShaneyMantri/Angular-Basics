@@ -23,11 +23,21 @@
     </svg>
 
   </div>
-  <app-test (childevent)="message=$event" [parentData]="nameSentToTest" ></app-test>
+  <!-- add router link directive -->
+  <!--  routerlinkactve allows to apply multiple css classes when router link active -->
+  <nav>
+    <a routerLink="/departments" routerLinkActive="active">Departments</a>
+    <a routerLink="/employees" routerLinkActive="active">Employees</a>
+  </nav>
+
+  <!-- comment for routing demo  -->
+  <!-- <app-test (childevent)="message=$event" [parentData]="nameSentToTest" ></app-test>
   <p>{{message}}</p>
 
 
-  <app-test2></app-test2>
+  <app-test2></app-test2> -->
+
+
   <!-- Resources -->
 
 
@@ -43,5 +53,5 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 
-
+<!-- router view comes here -->
 <router-outlet></router-outlet>

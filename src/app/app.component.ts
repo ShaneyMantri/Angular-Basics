@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 // html and css of the apps
 // metadata decorator
 @Component({
