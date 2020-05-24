@@ -10,7 +10,9 @@ import { AppComponent } from './app.component';
 import { TestingService } from './testing.service'
 import { HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { DepartmentDetailComponent } from './department-detail/department-detail.component'
+import { DepartmentDetailComponent } from './department-detail/department-detail.component';
+import { DepartmentOverviewComponent } from './department-overview/department-overview.component';
+import { DepartmentContactComponent } from './department-contact/department-contact.component'
 //entry point of the app
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { DepartmentDetailComponent } from './department-detail/department-detail
     // Test2Component
     routingComponents,
     PageNotFoundComponent,
-    DepartmentDetailComponent
+    DepartmentDetailComponent,
+    DepartmentOverviewComponent,
+    DepartmentContactComponent
   ],
   imports: [
     BrowserModule,

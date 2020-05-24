@@ -1,6 +1,20 @@
 <h1>department-detail</h1>
 <h3>You selected  Department with id = {{departmentId}}</h3>
-<a (click)="goPrevious()">Previous</a>
-<a (click)="goNext()">Next</a>
+
+<p>
+    <button (click)="seeOverview()">Overview</button>
+    <button (click)="seeContact()">Contact</button>
+</p>
+
+
+<!-- output the router html -->
+<router-outlet></router-outlet>
+
+
+<p>
+    <button (click)="goPrevious()">Previous</button>
+    <button (click)="goNext()">Next</button>
+</p>
+
 <!-- optional route params -->
 <button (click)="onBack()">Back</button>

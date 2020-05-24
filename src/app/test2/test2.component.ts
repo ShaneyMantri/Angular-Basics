@@ -50,9 +50,18 @@ export class Test2Component implements OnInit {
     //add to constructor also
     //url construction
     // first param is url and second param is route parameter
-    this.router.navigate(['/departments',department.id]);
+    // this.router.navigate(['/departments',department.id]);
     // need activated route service to read this route parameter
     // make hanges in department-detail compoenent ts
+
+
+    // Relative navigation
+    //like append department id to the current route and navigate to thet url
+    this.router.navigate([department.id], {relativeTo: this.route})
+
+
+
+
   };
 
   isSelected(department){
