@@ -7,7 +7,7 @@
 
 <h2>Route parameter</h2>
 <ul class="items">
-  <li (click)="onSelect(dep)" *ngFor="let dep of departments">
+  <li (click)="onSelect(dep)" [class.selected]="isSelected(dep)" *ngFor="let dep of departments">
     <span class="badge">{{dep.id}}</span>{{dep.name}}
   </li>
 </ul>

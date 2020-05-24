@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  TestingService } from "../testing.service";
 import { Router } from "@angular/router";
+import { ActivatedRoute, ParamMap } from "@angular/router";
 
 
 
@@ -15,7 +16,9 @@ export class Test2Component implements OnInit {
   // use services
   public employeeList =[];
   public errorMsg = "";
-  constructor(private _testingservice: TestingService, private router:Router) { }
+
+  public selectedId;
+  constructor(private _testingservice: TestingService, private router:Router, private route : ActivatedRoute) { }
 
   ngOnInit(): void {
     // for without http get
@@ -26,6 +29,10 @@ export class Test2Component implements OnInit {
     // then assign data to class propery
     this._testingservice.getemployees().subscribe(data=>this.employeeList=data,
     error=>this.errorMsg=error);
+    this.route.paramMap.subscribe((params: ParamMap)=>{
+      let id = parseInt(params.get('id'));
+      this.selectedId = id;
+    });
 
   }
 
@@ -48,4 +55,7 @@ export class Test2Component implements OnInit {
     // make hanges in department-detail compoenent ts
   };
 
+  isSelected(department){
+    return department.id===this.selectedId;
+  };
 }
