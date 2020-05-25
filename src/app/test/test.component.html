@@ -17,13 +17,14 @@
 <input id=" {{myId}}" type="text" name="" value="Mantri">
 
 
+<h2>Boolean Property Binding</h2>
 <!-- interpolation doesnt work with boolean like disabled attribute hence use property binding -->
-<input disabled="false" id=" {{myId}}" type="text" name="" value="Mantri">
+<input disabled="false" [id]="myId" type="text" name="" value="Mantri">
 <!-- hence use property binding -->
 <input [disabled]="false" id=" {{myId}}" type="text" name="" value="Mantri">
 
 <!-- isDisabled in test class  -->
-<input [disabled]="isDisabled" id=" {{myId}}" type="text" name="" value="Mantri">
+<input [disabled]="isDisabled" [id]=" myId" type="text" name="" value="Mantri">
 
 
 
@@ -33,11 +34,16 @@
   <h2>Hello</h2>
   <!-- binded class -->
   <h2 [class]="successClass">Class binding</h2>
+
+
   <!-- condtionally apply classes -->
-  <h2 [class.text-danger]="hasError" >Conditonal apply</h2>
+  <!--  class in css file -->
+  <h2 [class.text-test]="hasError" >Conditonal apply</h2>
 
   <!-- Can be used to select and apply from multiple classes -->
   <h2 [ngClass]="messageClass">NG DIRECTIVE FOR ANGULAR</h2>
+
+  
   <!--  Style binding -->
   <h2 [style.color]="'orange'">Style Binding</h2>
 
@@ -121,7 +127,7 @@
     <div *ngSwitchDefault>Default color case</div>
   </div>
 
-  <!-- ngFor --- rnedering list of elements and is like a for loop -->
+  <!-- ngFor --- rendering list of elements and is like a for loop -->
   <h3>ngFor</h3>
   <div *ngFor="let colorelement of forColors; index as i; first as f; last as l; odd as o; even as e">
     <p>{{f}} {{l}} {{o}} {{e}} {{i}} {{colorelement}}</p>
@@ -135,7 +141,7 @@
   <button (click)="fireEvent()">Send data to Parent</button>
 
 
-  <!-- Pipe -->
+  <!-- Pipe used to modify the view of the output -->
   <h2>Pipe</h2>
   <p>{{pipeName}}</p>
   <p>{{pipeName | lowercase }}</p>
@@ -143,11 +149,12 @@
   <p>{{pipeName | titlecase }}</p>
   <!-- slice pipe to display a part of string -->
   <!-- at index slice:index:endindex -->
-  <h2>{{ pipeName| slice:3 }}</h2>
-  <h2>{{ pipeName| slice:4:10 }}</h2>
+  <h2>{{ pipeName | slice:3 }}</h2>
+  <h2>{{ pipeName | slice:4:10 }}</h2>
 
   <!-- json pipe -->
   <h2>{{ person | json }}</h2>
+  <h2>{{ person.firstname }}</h2>
 
   <!-- number pipe for numbers -->
   <!-- minimum number of integer digit before dot and after that minimum and maximum no of digits after dot -->
@@ -157,12 +164,13 @@
 
 
   <!-- percent pipe -->
-  <h2>{{ 0.5| percent }}</h2>
+  <h2>{{ 0.5 | percent }}</h2>
 
 <!-- Currency pipe -->
-  <h2>{{ 0.5| currency }}</h2>
-  <h2>{{ 0.5| currency: 'INR' }}</h2>
-  <h2>{{ 0.5| currency: 'EUR': 'code' }}</h2>
+  <h2>{{ 0.5 | currency }}</h2>
+  <h2>{{ 0.5 | currency: 'INR' }}</h2>
+  <h2>{{ 0.5 | currency: 'GBP' }}</h2>
+  <h2>{{ 0.5 | currency: 'EUR': 'code' }}</h2>
 
   <!-- Date pipe -->
   <h2>{{ date }}</h2>

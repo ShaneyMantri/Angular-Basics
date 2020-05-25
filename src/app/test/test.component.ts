@@ -10,7 +10,7 @@ import {  TestingService } from "../testing.service";
   templateUrl: './test.component.html',
   // or used
   /*
-    teemplate: ` <--back ticks
+    template: ` <--back ticks
               <div>
               Inline template
                 </div>
@@ -52,6 +52,8 @@ export class TestComponent implements OnInit {
   greetUser(){
     return "Hello "+this.name+", I am from the test component class";
   }
+
+  
   onClick(){
     console.log("Hello User. Event binding");
     alert("Event binding successfull");
@@ -125,8 +127,8 @@ export class TestComponent implements OnInit {
     // for http get req
     // need to subscribe to receive data
     // then assign data to class propery
-    this._testingservice.getemployees().subscribe(data=>this.employeeList=data,
-    error=> this.errorMsg=error);
+    this._testingservice.getemployees().subscribe((data)=>this.employeeList=data,
+    (error)=> this.errorMsg=error);
 
 
   }

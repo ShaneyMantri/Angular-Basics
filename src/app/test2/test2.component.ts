@@ -29,6 +29,8 @@ export class Test2Component implements OnInit {
     // then assign data to class propery
     this._testingservice.getemployees().subscribe(data=>this.employeeList=data,
     error=>this.errorMsg=error);
+
+
     this.route.paramMap.subscribe((params: ParamMap)=>{
       let id = parseInt(params.get('id'));
       this.selectedId = id;
@@ -52,7 +54,7 @@ export class Test2Component implements OnInit {
     // first param is url and second param is route parameter
     // this.router.navigate(['/departments',department.id]);
     // need activated route service to read this route parameter
-    // make hanges in department-detail compoenent ts
+    // make changes in department-detail compoenent ts
 
 
     // Relative navigation

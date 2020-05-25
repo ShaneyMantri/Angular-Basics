@@ -17,6 +17,8 @@ export class TestingService {
 
   }
 
+  // Without http call
+
   // getemployees(){
   //   return [{"id":1, "name":"CS","age":31},
   //       {"id":2, "name":"JPMC","age":42},
@@ -24,9 +26,9 @@ export class TestingService {
   //       {"id":4, "name":"GOOGLE","age":24}];
   // }
 
-  // get method takes url from where data is t be fetched, can be server, local file etc
+  // get method takes url from where data is to be fetched, can be server, local file etc
   private _url: string = "/assets/data/emp.json"; //proper working
-  // private _url: string = "/assets/data/emp1.json"; //proper checking erorr handling
+  // private _url: string = "/assets/data/emp1.json"; //proper checking error handling
 
   getemployees(): Observable<Iempl[]>{
     return this.http.get<Iempl[]>(this._url).catch(this.errorHandler); //to cath error, errorHandler method triggered
